@@ -58,14 +58,13 @@ angular.module('app.skillTreeController', ['starter.factory', 'hljs', 'starter.u
               skillFlareChild[skill.text] = [rating];
 
               $scope.ratings = $scope.ratings + rating;
-              if (rating >= 0) {
+              if (rating >= 3) {
                 $scope.learnedSkills.push({
                   skill: skill.text,
                   rating: rating
                 });
               }
-              var MAX_SKILL_POINTS = 250;
-              if ($scope.ratings > MAX_SKILL_POINTS) {
+              if ($scope.ratings > 100) {
                 $scope.isInfinite = true;
               }
             }
