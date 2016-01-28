@@ -1,23 +1,22 @@
 <ion-view view-title="{{'solution' | translate }}">
   <ion-nav-buttons side="secondary">
-    <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+    <button class="button button-icon icon ion-ios-search" ng-click="showFilterBar()">
     </button>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="list card" ng-repeat="solution in solutions">
-      <div class="item">
-        <h2>{{solution.name}}</h2>
-      </div>
+  <ion-content class="has-header" on-swipe-right="goBack()" on-swipe-left="goForward()">
+    <ion-list class="topics">
+      <ion-item collection-repeat="solution in solutions" collection-item-width="'100%'">
+        <div class="item item-head item-stable">
+          <h2>{{solution.name}}</h2>
+        </div>
 
-      <div class="item item-body">
-        <p>
-          {{solution.description}}
-        </p>
-      </div>
-      <div class="item tabs tabs-secondary tabs-icon-left modals">
-        <!--<a class="tab-item" ng-repeat="stack in solution.stacks" href="#/app/stack/{{stack | lowercase}}">{{stack}}</a>-->
-        <a class="tab-item" ng-repeat="stack in solution.stacks">{{stack}}</a>
-      </div>
-    </div>
+        <div class="item item-body">
+          <span ng-repeat="stack in solution.stacks">{{stack}} </span>
+          <p>
+            {{solution.description}}
+          </p>
+        </div>
+      </ion-item>
+      </ion-list>
   </ion-content>
 </ion-view>

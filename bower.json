@@ -2,7 +2,10 @@
   "name": "Growth",
   "private": "true",
   "devDependencies": {
-    "ionic": "1.2.4"
+    "ionic": "1.2.4",
+    "angular-resource": "~1.4.9",
+    "angular-moment": "~0.10.3",
+    "moment": "~2.11.1"
   },
   "dependencies": {
     "ngCordova": "~0.1.23-alpha",
@@ -11,6 +14,7 @@
     "angular-highlightjs": "~0.5.1",
     "jquery": "~2.1.4",
     "ionic-rating": "~0.2.0",
-    "d3": "~3.5.12"
+    "d3": "~3.5.12",
+    "ion-affix": "~1.0.1"
   }
 }

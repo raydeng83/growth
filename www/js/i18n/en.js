@@ -1,5 +1,6 @@
 SIDE_MENU["en"] = {
   "exam": "Exam",
+  "menu": "Menu",
   "bookroadmap": "Book RoadMap",
   "solution": "Solution",
   "feedback": "Feedback",
@@ -8,7 +9,10 @@ SIDE_MENU["en"] = {
   "more": "More",
   "title" : "Be Awesome Developer",
   "roadmap": "Road Map",
-  "talk": "Talk"
+  "talk": "Talk",
+  "articles": "Articles",
+  "reviews": "Reviews",
+  "community": "Community"
 };
 
 MAIN_VIEW_MENU["en"] = {
@@ -64,9 +68,9 @@ BOOK_ROADMAP_MENU["en"] = {
   "thoughtworks-reading-roadmap" : "Reading-RoadMap",
   "programming-practice" : "Practical Programming",
   "architecture" : "Architecture and Frame",
-  "methodology" : "methodology",
+  "methodology" : "Methodology",
   "leadership" : "Thinking and Leading",
-  "specific-domain" : "Specific-Focus-Area Reading-RoadMap",
+  "specific-domain" : "Domain Reading-RoadMap",
   "front-end" : "Front-End"
 };
 
@@ -114,7 +118,7 @@ ARCHITECTURE_DESIGN["en"]={
 };
 
 METHODOLOGY["en"]={
-  "methodology" : "methodology",
+  "methodology" : "Methodology",
   "basic" : "Basic",
   "story-agile" : '"User Stories Applied：For Agile Software Development"',
   "gold-mine" : "The Gold Mine: A Novel of Lean Turnaround",
@@ -130,4 +134,11 @@ METHODOLOGY["en"]={
 
   "advanced" : "Advanced",
   "spec-example" : '"Specification by Example"'
-}
+};
+
+COMMUNITY["en"] = {
+  "login": "Login",
+  "close": "Close",
+  "username": "Username",
+  "password": "Password"
+};

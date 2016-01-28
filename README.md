@@ -1,4 +1,5 @@
-﻿# Growth —— Be Awesome Developer
+﻿Growth —— Be Awesome Developer
+---
 
 **Android**:
 
@@ -8,18 +9,29 @@ Download：[http://fir.im/phodal](http://fir.im/phodal)
 
 (ps: 已在其他各大Android应用商店发布)
 
-**Windows Phone & Windows 10**:
+**Windows Phone**:
 
 <a href="http://windowsphone.com/s?appid=a6022e5d-b101-4d8f-a836-d3bfb6fd73ef"><img src="https://assets.windowsphone.com/8d997df3-5b6e-496c-88b3-e3f40117c8fd/English-get-it-from-MS_InvariantCulture_Default.png" srcset="https://assets.windowsphone.com/0100c7e5-1455-40bc-a351-b77d2801ad5a/English_get-it-from-MS_InvariantCulture_Default.png 2x"  alt="Get it from Microsoft" /></a>
-<a href="https://www.microsoft.com/store/apps/9nblggh5g8kx"><img src="https://assets.windowsphone.com/d86ab9b4-2f3d-4a94-92f8-1598073e7343/English_Get_it_Win_10_InvariantCulture_Default@2x.png" srcset="https://assets.windowsphone.com/5d2bd562-d242-4538-85f4-857d6457404b/English_Get_it_Win_10_InvariantCulture_Default.png 2x"  alt="Get it on Windows 10" /></a>
 
 **iOS**:
 
-In development...
+**Waiting For Review**...
+
+**Desktop**
+
+[Download Page](https://github.com/phodal/growth/releases)
+
+Powered by Electron，Support OS:
+
+1. Mac OS X
+2. GNU/Linux
+3. Windows
 
 **Web**:
 
 Online: [http://www.growth.ren/](http://www.growth.ren/)
+
+###Others
 
 QQ群: 529600394，我的微信公众号: phodal
 
@@ -27,70 +39,32 @@ QQ群: 529600394，我的微信公众号: phodal
 
 ##简介
 
-Growth关注于**Web开发的流程及其技术栈、学习路线、成长衡量**，如：
+Growth是一款专注于Web开发者成长的应用，涵盖Web开发的流程及技术栈，Web开发的学习路线、成长衡量等各方面。在这里，你将通过不断检验自己的学习成效，形成属于你自己的独一无二的个性技能图谱。
 
- - 完整的Web开发,运维,部署,维护介绍   
- - 如何写好代码——重构、测试、模式
- - 遗留代码、遗留系统的形成
- - 不同阶段所需的技能
- - 书籍推荐
- - 技术栈推荐
- - Web应用解决方案
+在这里你可以了解到：
+
+ - 完整的Web开发，运维，部署，维护   
+ - 如何写好代码——重构、测试、模式
+ - 遗留代码、遗留系统的形成
+
+在这里你可以get到：
+
+ - 不同阶段所需的不同技能
+ - 相关书单推荐
+ - 相关技术栈推荐
+ - Web应用解决方案
+
+在这里你还可以：
+
+- 玩玩小游戏了解技能掌握状况
+- 一键解锁新技能，形成技能图谱 
+- 一步步成为Web顶尖开发者 
  
-**en**
-
-Growth is a app to help you become awesome developer:
-
-We design those for you:
- 
- - full web developer learn, development, deploy, manitance introduction
- - skill roadmap 
- - book roadmap
- - web solution
- - how to test and refactor
- 
-###主视图
- 
-如下图所示：
-
-<img src="www/img/help/start.jpg" width="400">
-
-1. 技能图谱。点击右上角的图标可以进入技能图谱，技能图谱将展示现在你学到的技术栈，并且可以向你推荐未来应该学习的技术栈。图标上的10则表示你新GET到的功能点数。
-2. 学习路线。学习路线是依据七日来规划的，每一日关注的点不同，如在第一天关注于如何从零开始去搭建项目。
-3. 切换视图。当前有两种视图，即路线图和七日谈。
- 
-###七日谈模式——侧重于理论
- 
-如下图所示：
-
-<img src="www/img/help/day.jpg" width="400">
-
-1. 右上角的简介。会介绍一些每一个事项相关的信息。
-2. GET技能。用于构建技能图谱、提供成长指南。
-3. 工具和书单。提供一些实用的工具，以及阅读书单等等。 
- 
-###路线图模式——侧重于实战
- 
-如下图所示：
-
-<img src="www/img/help/roadmap.jpg" width="400">
-
-在每个Card中会包含如下的Todo List:
-
-<img src="www/img/help/todo.jpg" width="400">
-
-###菜单
-
-向左滑动即可以完成这个事项。
- 
-<img src="www/img/help/menu.jpg" width="400"> 
-
-1. 技能测验。用于验证我们学习的内容，以及查找补漏。
-2. 读书路线。提供不同方向的书单，如前端。
-3. 解决方案。提供一些现有框架的框架示例。
-4. 意见和反馈。使用Github Issues来收集用户意见。 
-
 ##Setup && Develop 
+
+###Architecture
+
+![Architecture](growth-arch.png)
 
 ###Tech Stack
 
@@ -158,13 +132,13 @@ Google Analytics:
 2. [http://blog.vjrantal.net/2015/01/08/experiences-with-ionic-on-windows-phone-8-1/](http://blog.vjrantal.net/2015/01/08/experiences-with-ionic-on-windows-phone-8-1/) 
 3. [http://www.badpenguin.org/how-to-make-your-ionic-cordova-app-to-run-under-windows-phone-8-1-and-desktop](http://www.badpenguin.org/how-to-make-your-ionic-cordova-app-to-run-under-windows-phone-8-1-and-desktop)
 
-####iOS
+####Desktop
 
-Coming soon...
+Install Electron and Run
 
-##Todo
-
-1. Social Communications
+     electron .
+     
+file ``desktop.js``
 
 ##其他
 
@@ -184,7 +158,6 @@ Skill Map基于: [http://bl.ocks.org/wizicer/f662a0b04425fc0f7489](http://bl.ock
 
 前端资料基于: [https://github.com/dypsilon/frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks)
 
-
 部分书评来自于亚马逊、豆瓣。
 
 ###内容贡献者
@@ -192,13 +165,13 @@ Skill Map基于: [http://bl.ocks.org/wizicer/f662a0b04425fc0f7489](http://bl.ock
 感谢以下的内容贡献者们，结果由git-summary生成
 
      project  : growth
-     repo age : 4 weeks
-     active   : 28 days
-     commits  : 731
-     files    : 778
+     repo age : 5 weeks
+     active   : 35 days
+     commits  : 901
+     files    : 755
      authors  :
-       724	Fengda HUANG  99.0%
-         7	Le Deng       1%
+       893	Fengda HUANG  99.1%
+         8	Le Deng       0.9
 
 英语版:  [Le Deng](https://github.com/raydeng83)
 

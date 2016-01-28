@@ -1,14 +1,18 @@
 SIDE_MENU["zh-cn"] = {
   "exam": "技能测验",
+  "menu": "菜单",
   "bookroadmap": "读书路线",
-  "solution": "解决方案(Beta)",
+  "solution": "解决方案",
   "feedback": "意见和反馈",
   "help": "使用指南",
   "about": "关于",
   "more": "更多",
   "title" : "成为顶尖开发者",
   "roadmap": "路线图",
-  "talk": "七日谈"
+  "talk": "七日谈",
+  "articles": "全部文章",
+  "reviews": "全部书评",
+  "community": "社区"
 };
 
 MAIN_VIEW_MENU["zh-cn"] = {
@@ -129,4 +133,11 @@ METHODOLOGY["zh-cn"]={
 
   "advanced" : "高级篇",
   "spec-example" : "《实例化需求》"
-}
+};
+
+COMMUNITY["zh-cn"] = {
+  "login": "登录",
+  "close": "关闭",
+  "username": "用户名",
+  "password": "密码"
+};

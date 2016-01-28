@@ -4,8 +4,21 @@ var isIOS = ionic.Platform.isIOS();
 var isAndroid = ionic.Platform.isAndroid();
 var isWindowsPhone = ionic.Platform.isWindowsPhone();
 
-angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.AchievementCtrl', 'app.MainCtrl', 'app.AIControl', 'app.skillTreeController', 'app.quizController', 'app.reviewController', 'app.dayController', 'starter.controllers', 'starter.services', 'hc.marked', 'ionic.rating', 'tabSlideBox', 'jett.ionic.filter.bar', 'pascalprecht.translate'])
-  .run(function ($ionicPlatform) {
+angular.module('starter', [
+    'ionic',
+    'ngCordova',
+    'hc.marked',
+    'ionic.rating',
+    'tabSlideBox',
+    'jett.ionic.filter.bar',
+    'pascalprecht.translate',
+    'angularMoment',
+    'ngResource',
+    'ion-affix',
+    'starter.controllers',
+    'starter.services'
+  ])
+  .run(function ($ionicPlatform, amMoment, $window, $translate) {
     $ionicPlatform.ready(function () {
       if (typeof analytics !== 'undefined') {
         analytics.startTrackerWithId('UA-71907748-1');
@@ -19,24 +32,27 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
 
       }
       if (window.StatusBar) {
-        // org.apache.cordova.statusbar required
-        //StatusBar.styleDefault();
-        StatusBar.backgroundColorByHexString("#387ef5");
+        StatusBar.styleDefault();
+        if(isAndroid) {
+          StatusBar.backgroundColorByHexString("#5e6772");
+        }
       }
-      if(typeof navigator.globalization !== "undefined") {
-        navigator.globalization.getPreferredLanguage(function(language) {
-          //var lang = angular.lowercase(language.value);
-          //$translate.use(lang).then(function(data) {
-          //  alert("SUCCESS -> " + data);
-          //}, function(error) {
-          //  alert("ERROR -> " + error);
-          //});
-        }, null);
+
+      var language = $window.localStorage.getItem('language');
+      if (language !== undefined) {
+        $translate.use(language);
+        amMoment.changeLocale(language);
+      } else {
+        amMoment.changeLocale('zh-cn');
       }
     });
   })
   .config(function ($ionicConfigProvider) {
     $ionicConfigProvider.navBar.alignTitle('left');
+    $ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.backButton.text('');
+    $ionicConfigProvider.backButton.previousTitleText(false);
+
   })
   .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
     $translateProvider.useSanitizeValueStrategy('');
@@ -52,6 +68,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
     $translateProvider.translations('en', ARCHITECTURE_DESIGN['en']);
     $translateProvider.translations('en', METHODOLOGY['en']);
     $translateProvider.translations('en', HELPER_ARTICLES['en']);
+    $translateProvider.translations('en', COMMUNITY['en']);
 
 
     $translateProvider.translations('zh-cn', DAY_TITLE['zh-cn']);
@@ -65,12 +82,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
     $translateProvider.translations('zh-cn', ARCHITECTURE_DESIGN['zh-cn']);
     $translateProvider.translations('zh-cn', METHODOLOGY['zh-cn']);
     $translateProvider.translations('zh-cn', HELPER_ARTICLES['zh-cn']);
+    $translateProvider.translations('zh-cn', COMMUNITY['zh-cn']);
 
     $translateProvider.preferredLanguage('zh-cn');
-    var language = window.localStorage.getItem('language');
-    if (language !== undefined) {
-      $translateProvider.preferredLanguage(language);
-    }
     $translateProvider.fallbackLanguage('en');
   })
   .config(['markedProvider', function (markedProvider) {
@@ -109,74 +123,112 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
-      })
-
-      .state('app.main', {
-        url: '/main',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/main.html',
-            controller: 'MainCtrl'
-          }
-        }
-      })
-
-      .state('app.more', {
-        url: '/more',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/more.html'
-          }
-        }
+        templateUrl: 'templates/tabs.html'
       })
 
       .state('app.solution', {
         url: "/solution",
         views: {
-          'menuContent': {
+          'app-solution': {
             templateUrl: "templates/more/solution.html",
             controller: 'SolutionCtrl'
           }
         }
       })
 
-      .state('app.stack', {
-        url: "/stack/:stack",
+      /*
+
+       DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
+       */
+
+      .state('app.day0', {
+        url: '/day/0',
         views: {
-          'menuContent': {
-            templateUrl: "templates/skills/stack.html",
-            controller: 'StackCtrl'
+          'app-main': {
+            templateUrl: 'templates/days/day0.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day1', {
+        url: '/day/1',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day1.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day2', {
+        url: '/day/2',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day2.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day3', {
+        url: '/day/3',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day3.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day4', {
+        url: '/day/4',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day4.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day5', {
+        url: '/day/5',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day5.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day6', {
+        url: '/day/6',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day6.html',
+            controller: 'DayCtrl'
+          }
+        }
+      })
+      .state('app.day7', {
+        url: '/day/7',
+        views: {
+          'app-main': {
+            templateUrl: 'templates/days/day7.html',
+            controller: 'DayCtrl'
           }
         }
       })
 
-      .state('app.about', {
-        url: '/about',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/more/about.html',
-            controller: 'AboutCtrl'
-          }
-        }
-      })
 
-      .state('app.help', {
-        url: '/help',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/more/help.html'
-          }
-        }
-      })
+      /*
 
-      .state('app.setting', {
-        url: '/setting',
+       MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+       ====================================================================================================
+
+       */
+      .state('app.main', {
+        url: '/main',
+        parent: "app",
         views: {
-          'menuContent': {
-            templateUrl: 'templates/setting.html',
-            controller: 'SettingCtrl'
+          'app-main': {
+            templateUrl: 'templates/main.html',
+            controller: 'MainCtrl'
           }
         }
       })
@@ -184,7 +236,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.skilltree', {
         url: '/skilltree',
         views: {
-          'menuContent': {
+          'app-main@app': {
             templateUrl: 'templates/skills/skilltree.html',
             controller: 'skillTreeControl'
           }
@@ -194,7 +246,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.ai', {
         url: '/ai',
         views: {
-          'menuContent': {
+          'app-main@app': {
             templateUrl: 'templates/skills/ai.html',
             controller: 'AIControl'
           }
@@ -204,9 +256,105 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.achievement', {
         url: '/achievement',
         views: {
-          'menuContent': {
+          'app-main@app': {
             templateUrl: 'templates/skills/achievement.html',
             controller: 'AchievementCtrl'
+          }
+        }
+      })
+
+      /*
+
+       CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+
+       */
+
+      .state('app.community', {
+        url: '/community',
+        views: {
+          'app-community': {
+            templateUrl: 'templates/community.html',
+            controller: 'CommunityCtrl'
+          }
+        }
+      })
+
+      .state('app.topic', {
+        url: '/topic/:id',
+        views: {
+          'app-community': {
+            templateUrl: 'templates/topic.html',
+            controller: 'TopicCtrl',
+            resolve: {
+              discussion: function (Discussions, $stateParams) {
+                return Discussions.get({id: $stateParams.id});
+              }
+            }
+          }
+        }
+      })
+
+      .state('app.stack', {
+        url: "/stack/:stack",
+        views: {
+          'app-community': {
+            templateUrl: "templates/skills/stack.html",
+            controller: 'StackCtrl'
+          }
+        }
+      })
+
+      /*
+
+       .............................................................
+
+       */
+
+      .state('app.more', {
+        url: '/more',
+        views: {
+          'app-more': {
+            templateUrl: 'templates/more.html',
+            controller: 'MoreCtrl'
+          }
+        }
+      })
+
+      .state('app.todo', {
+        url: '/todo',
+        views: {
+          'app-more': {
+            templateUrl: 'templates/todo.html',
+            controller: 'TodoViewCtrl'
+          }
+        }
+      })
+
+      .state('app.about', {
+        url: '/about',
+        views: {
+          'app-more': {
+            templateUrl: 'templates/more/about.html',
+            controller: 'AboutCtrl'
+          }
+        }
+      })
+
+      .state('app.help', {
+        url: '/help',
+        views: {
+          'app-more': {
+            templateUrl: 'templates/more/help.html'
+          }
+        }
+      })
+
+      .state('app.setting', {
+        url: '/setting',
+        views: {
+          'app-more': {
+            templateUrl: 'templates/setting.html',
+            controller: 'SettingCtrl'
           }
         }
       })
@@ -214,7 +362,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.article', {
         url: '/article/:slug',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/read/article-detail.html',
             controller: 'ArticleCtrl'
           }
@@ -224,7 +372,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.articles', {
         url: '/articles',
         views: {
-          'menuContent': {
+          'app-more': {
             templateUrl: 'templates/read/article-list.html',
             controller: 'ArticleListCtrl'
           }
@@ -234,7 +382,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.review', {
         url: '/review/:slug',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/read/review-detail.html',
             controller: 'ReviewCtrl'
           }
@@ -244,7 +392,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.reviews', {
         url: '/reviews',
         views: {
-          'menuContent': {
+          'app-more': {
             templateUrl: 'templates/read/review-list.html',
             controller: 'ReviewListCtrl'
           }
@@ -254,109 +402,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.book', {
         url: '/book',
         views: {
-          'menuContent': {
+          'app-more': {
             templateUrl: 'templates/read/book.html'
-          }
-        }
-      })
-
-      .state('app.faq', {
-        url: '/faq',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/more/faq.html'
-          }
-        }
-      })
-
-      .state('app.feedback', {
-        url: '/feedback',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/more/feedback.html',
-            controller: 'FeedbackCtrl'
-          }
-        }
-      })
-
-      .state('app.2', {
-        url: '/exam',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/exam.html'
-          }
-        }
-      })
-
-      .state('app.day0', {
-        url: '/day/0',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day0.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day1', {
-        url: '/day/1',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day1.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day2', {
-        url: '/day/2',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day2.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day3', {
-        url: '/day/3',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day3.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day4', {
-        url: '/day/4',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day4.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day5', {
-        url: '/day/5',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day5.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day6', {
-        url: '/day/6',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day6.html',
-            controller: 'DayCtrl'
-          }
-        }
-      })
-      .state('app.day7', {
-        url: '/day/7',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/days/day7.html',
-            controller: 'DayCtrl'
           }
         }
       })
@@ -364,7 +411,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.prog', {
         url: '/books/prog',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/books/prog.html'
           }
         }
@@ -372,7 +419,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.arch', {
         url: '/books/arch',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/books/arch.html'
           }
         }
@@ -380,7 +427,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.method', {
         url: '/books/method',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/books/method.html'
           }
         }
@@ -388,7 +435,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.think', {
         url: '/books/think',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/books/think.html'
           }
         }
@@ -396,8 +443,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.bookfe', {
         url: '/books/fe',
         views: {
-          'menuContent': {
+          'app-more@app': {
             templateUrl: 'templates/books/fe.html'
+          }
+        }
+      })
+
+      /*
+
+       EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+       */
+      .state('app.exam', {
+        url: '/exam',
+        views: {
+          'app-exam': {
+            templateUrl: 'templates/exam.html',
+            'controller': 'ExamCtrl'
           }
         }
       })
@@ -405,7 +467,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.quiz', {
         url: '/quiz/:slug',
         views: {
-          'menuContent': {
+          'app-exam@app': {
             templateUrl: 'templates/game/quiz.html',
             controller: 'AllQuizCtrl'
           }
@@ -414,7 +476,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
       .state('app.advancedQuiz', {
         url: '/advance-quiz/:slug',
         views: {
-          'menuContent': {
+          'app-exam@app': {
             templateUrl: 'templates/game/advance-quiz.html',
             controller: 'AdvancedQuizCtrl'
           }
@@ -424,3 +486,5 @@ angular.module('starter', ['ionic', 'ngCordova', 'app.AppControl', 'app.Achievem
 
     $urlRouterProvider.otherwise('/app/main');
   });
+
+angular.module('starter.controllers', ['starter.factory', 'hljs', 'starter.utils', 'ionic.contrib.ui.tinderCards']);

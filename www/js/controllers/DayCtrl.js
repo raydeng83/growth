@@ -1,4 +1,4 @@
-angular.module('app.dayController', ['hljs', 'starter.utils'])
+angular.module('starter.controllers')
   .controller('DayCtrl', function ($scope, $ionicModal, $storageServices, $analytics, $http, $filter, $sce, $window, $translate) {
     $analytics.trackView('Day Ctrl List');
 
@@ -80,23 +80,6 @@ angular.module('app.dayController', ['hljs', 'starter.utils'])
       $scope.currentModal.hide();
     };
 
-    $storageServices.get('isFirstTimeDay', function (value) {
-      if (value !== 'false') {
-        $ionicModal.fromTemplateUrl('templates/intro/day1.html', {
-          id: 'intro1',
-          scope: $scope,
-          animation: 'slide-in-up'
-        }).then(function (modal) {
-          modal.show();
-          $scope.modal = modal;
-        });
-
-        $scope.$on('modal.hidden', function () {
-          $storageServices.set('isFirstTimeDay', 'false');
-        });
-      }
-    });
-
     $scope.openSpecialModal = function (subtopic, branch) {
       $analytics.trackView('modal ' + subtopic + ' ' + branch);
 
@@ -143,28 +126,25 @@ angular.module('app.dayController', ['hljs', 'starter.utils'])
 
     $scope.openArticleModal = function (article) {
       $analytics.trackView('article ' + article);
+      $http({method: 'GET', url: 'assets/article/' + article + '.md'}).success(function (response) {
+        var articleInfo = $filter('filter')(AllArticle, {"slug": article})[0];
 
-      $ionicModal.fromTemplateUrl('templates/read/article-detail.html', {
-        id: article,
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function (modal) {
-
-        $http({method: 'GET', url: 'assets/article/' + article + '.md'}).success(function (response) {
-          var articleInfo = $filter('filter')(AllArticle, {"slug": article})[0];
-
-          $scope.title = articleInfo.title;
-          $scope.EditArticle = function () {
-            window.open('https://github.com/phodal/growth/edit/master/www/assets/article/' + articleInfo.slug + '.md', '_system', 'location=yes');
-          };
-          $scope.htmlContent = $sce.trustAsHtml(marked(response))
-        }).error(function (data, status) {
-          alert(data + status);
+        $scope.title = articleInfo.title;
+        $scope.EditArticle = function () {
+          window.open('https://github.com/phodal/growth/edit/master/www/assets/article/' + articleInfo.slug + '.md', '_system', 'location=yes');
+        };
+        $scope.htmlContent = $sce.trustAsHtml(marked(response));
+        $ionicModal.fromTemplateUrl('templates/read/article-detail.html', {
+          id: article,
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function (modal) {
+          modal.show();
+          $scope.currentModal = modal;
+          $scope.currentModals.push(modal);
         });
-
-        modal.show();
-        $scope.currentModal = modal;
-        $scope.currentModals.push(modal);
+      }).error(function (data, status) {
+        alert(data + status);
       });
     };
 

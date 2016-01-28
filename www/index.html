@@ -5,13 +5,12 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title>Growth</title>
   <meta name="keywords" content="growth,growth hacker,growth hack, growth engineer,growth.ren">
-  <meta name="description" content="Growth&#x662F;&#x4E00;&#x4E2A;&#x5E26;&#x4F60;&#x8D70;&#x5411;&#x9876;&#x5C16;&#x5F00;&#x53D1;&#x5C16;&#x7684;Growth App&#x3002;&#x8FC7;&#x53BB;&#x6280;&#x672F;&#x662F;&#x963B;&#x788D;&#x4E1A;&#x52A1;&#x7684;&#x4E3B;&#x56E0;&#xFF0C;&#x4ECA;&#x5929;&#x963B;&#x788D;&#x7684;&#x4E3B;&#x8981;&#x56E0;&#x7D20;&#x662F;&#x4EBA;&#x5458;&#x7684;Growth&#x3002;&#x800C;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5FE7;&#x4F24;&#x7684;&#x8BDD;&#x9898;&#x662F;&#xFF1A;&#x52A0;&#x73ED;&#x5F71;&#x54CD;&#x4E86;&#x4ED6;&#x4EEC;&#x7684;&#x6210;&#x957F;&#x3002;&#x800C;&#x52A0;&#x73ED;&#x5BF9;&#x4E8E;&#x591A;&#x6570;&#x516C;&#x53F8;&#x6765;&#x8BF4;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x4E0D;&#x52A0;&#x73ED;&#x53EF;&#x4EE5;&#x8BA9;&#x4ED6;&#x4EEC;&#x4E0D;&#x518D;&#x52A0;&#x73ED;&#x3002;&#x5FEB;&#x6765;&#x4F7F;&#x7528;Growth&#xFF0C;&#x5E26;&#x4F60;&#x5FEB;&#x901F;&#x6210;&#x957F;&#x3002;">
-
+  <meta name="description" content="Growth是一个带你走向顶尖开发尖的Growth App。过去技术是阻碍业务的主因，今天阻碍的主要因素是人员的Growth。而另外一个忧伤的话题是：加班影响了他们的成长。而加班对于多数公司来说是必须的，因为他们不知道不加班可以让他们不再加班。快来使用Growth，带你快速成长。">
 
   <!-- compiled css output -->
   <link href="css/ionic.app.css" rel="stylesheet">
   <link href="lib/highlightjs/styles/mono-blue.css" rel="stylesheet">
-  <link href="lib/ionic-filter-bar/ionic.filter.bar.css" rel="stylesheet">
+  <link href="lib/ionic-filter-bar/ionic.filter.bar.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
   <script src="js/win-jscompat.js"></script>
@@ -25,13 +24,22 @@
   <!-- cordova script (this will be a 404 during development) -->
   <script src="cordova.js"></script>
 
+  <script>
+    //remove module for electron
+    if(typeof module !== 'undefined' && module && module.exports){
+      delete module;
+    }
+  </script>
   <script src="lib/highlightjs/highlight.pack.min.js"></script>
   <script src="lib/angular-highlightjs/angular-highlightjs.min.js"></script>
   <script src="lib/marked/marked.min.js"></script>
   <script src="lib/angular-marked/dist/angular-marked.min.js"></script>
+  <script src="lib/angular-resource/angular-resource.min.js"></script>
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/nools.min.js"></script>
   <script src="lib/angular-translate.min.js"></script>
+  <script src="lib/moment/min/moment-with-locales.min.js"></script>
+  <script src="lib/angular-moment/angular-moment.min.js"></script>
 
   <script src="lib/collide/collide.js"></script>
   <script src="lib/ionic-rating/ionic-rating.min.js"></script>
@@ -39,6 +47,7 @@
   <script src="lib/ionic.swipecards.js"></script>
   <script src="lib/ionic-filter-bar/ionic.filter.bar.min.js"></script>
   <script src="lib/tabSlideBox.js"></script>
+  <script src="lib/ion-affix/ion-affix.js"></script>
 
   <!-- i18n Support's js -->
   <script src="js/i18n/main.js"></script>
@@ -62,11 +71,21 @@
   <script src="js/utils.js"></script>
   <script src="js/factory.js"></script>
   <script src="js/services.js"></script>
-  <script src="js/skill/skillMap.js"></script>
+  <script src="js/services/topics.js"></script>
+  <script src="js/services/tokenHandler.js"></script>
+  <script src="js/skill/skillmap.js"></script>
   <script src="js/skill/skillBubble.js"></script>
 
-  <script src="js/controllers.js"></script>
   <script src="js/controllers/MainCtrl.js"></script>
+  <script src="js/controllers/CommunityCtrl.js"></script>
+  <script src="js/controllers/SettingControl.js"></script>
+  <script src="js/controllers/StackCtrl.js"></script>
+  <script src="js/controllers/AboutControl.js"></script>
+  <script src="js/controllers/MoreCtrl.js"></script>
+  <script src="js/controllers/ExamCtrl.js"></script>
+  <script src="js/controllers/SolutionCtrl.js"></script>
+  <script src="js/controllers/ArticleCtrl.js"></script>
+  <script src="js/controllers/TodoViewCtrl.js"></script>
   <script src="js/controllers/DayCtrl.js"></script>
   <script src="js/controllers/AppCtrl.js"></script>
   <script src="js/controllers/AIControl.js"></script>
@@ -76,6 +95,15 @@
   <script src="js/controllers/AchievementCtrl.js"></script>
 </head>
 <body ng-app="starter">
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <!--
+        The views will be rendered in the <ion-nav-view> directive below
+        Templates are in the /templates folder (but you could also
+        have templates inline in this html file if you'd like).
+      -->
   <ion-nav-view></ion-nav-view>
 </body>
 </html>

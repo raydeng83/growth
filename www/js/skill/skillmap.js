@@ -24,9 +24,11 @@ function RenderSkillTree($window, data) {
   function mouseover(data) {
     var c = getcrumbpath(data);
     i(c);
-    d3
-      .selectAll(".skills-sunburst path")
-      .style("opacity", .3), sunburst
+    //d3
+    //  .selectAll(".skills-sunburst path")
+    //  .style("opacity", .3),
+    //
+    sunburst
       .selectAll("path")
       .filter(function (a) {
         return c.indexOf(a) >= 0
@@ -118,8 +120,11 @@ function RenderSkillTree($window, data) {
   }
 
   d3.select('.skills-sunburst svg').remove();
-  var width = $window.innerWidth,
-    height = $window.innerWidth,
+  var width = $window.innerWidth;
+  if(width > 768) {
+    width = $("#skills").width()
+  }
+  var height = width,
     rad = Math.min(width, height) / Math.PI,
     q = k,
     r = {

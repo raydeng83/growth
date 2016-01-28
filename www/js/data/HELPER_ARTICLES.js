@@ -199,8 +199,12 @@ HELPER_ARTICLES['zh-cn'] = {
       title: 'UI与UX'
     },
     {
+      slug: 'first-ux',
+      title: 'UX入门'
+    },
+    {
       slug: 'learn-design',
-      title: '认识设计'
+      title: '认知设计'
     }
   ],
   ci: [
@@ -464,8 +468,12 @@ HELPER_ARTICLES['en'] = {
       title: 'UI与UX'
     },
     {
+      slug: 'first-ux',
+      title: 'UX入门'
+    },
+    {
       slug: 'learn-design',
-      title: '认识设计'
+      title: '认知设计'
     }
   ],
   ci: [

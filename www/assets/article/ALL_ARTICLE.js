@@ -121,7 +121,7 @@ var AllArticle = [
   },
   {
     "slug" : "learn-design",
-    "title": "认识设计"
+    "title": "认知设计"
   },
   {
     "slug" : "docker",
@@ -222,5 +222,9 @@ var AllArticle = [
   {
     "slug" : "browser-to-server",
     "title": "从浏览器到服务器发生了什么"
+  },
+  {
+    "slug" : "first-ux",
+    "title": "UX入门"
   }
 ];

@@ -1,7 +1,4 @@
 <ion-view view-title="{{'about' | translate }}">
-  <ion-nav-buttons side="right">
-    <a class="button button-icon ion-ios-help-outline" href="#/app/faq"></a>
-  </ion-nav-buttons>
   <ion-content>
     <ion-item class="item item-icon-right" type="item-text-wrap" ng-click="update()" ng-show="isAndroid">
       <h2>{{"update" | translate}}</h2>
@@ -15,7 +12,7 @@
       Growth
       <i class="icon ion-social-github"></i>
     </ion-item>
-    <ion-item class="item item-icon-right" type="item-text-wrap">
+    <ion-item class="item item-icon-right" type="item-text-wrap" ng-show="!isIOS">
       {{"qq-group" | translate}}: 529600394
     </ion-item>
   </ion-content>
