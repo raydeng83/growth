@@ -135,3 +135,21 @@ METHODOLOGY["en"]={
   "advanced" : "Advanced",
   "spec-example" : '"Specification by Example"'
 }
+
+THINKING_LEADING["en"]={
+  "thinking-leading" : "Thinking and Leading",
+  "basic" : "Basic",
+  "effecitve-executive" : '"The Effective Executive"',
+  "lights-on" : '"Are your lights on?"',
+  "technical-leader" : '"Becoming a Technical Leader"',
+
+  "intermediate" : "Intermediate",
+  "fifth-discipline" : '"The Fifth Discipline"',
+  "design-of-business" : '"The Design of Business"',
+  "management-3.0" : '"Management 3.0"',
+  "presnetation-to-win" : '"Presentation To Win"',
+  "mckinsey-way" : '"The McKinsey Way"',
+
+  "advanced" : "Advanced",
+  "think-fast-slow" : '"Thinking, Fast and Slow"'
+};

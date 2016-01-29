@@ -86,6 +86,7 @@ angular.module('starter', [
     $translateProvider.translations('en', PRACTICAL_PROGRAMMING['en']);
     $translateProvider.translations('en', ARCHITECTURE_DESIGN['en']);
     $translateProvider.translations('en', METHODOLOGY['en']);
+    $translateProvider.translations('en', THINKING_LEADING['en']);
     $translateProvider.translations('en', HELPER_ARTICLES['en']);
 
 
@@ -99,6 +100,7 @@ angular.module('starter', [
     $translateProvider.translations('zh-cn', PRACTICAL_PROGRAMMING['zh-cn']);
     $translateProvider.translations('zh-cn', ARCHITECTURE_DESIGN['zh-cn']);
     $translateProvider.translations('zh-cn', METHODOLOGY['zh-cn']);
+    $translateProvider.translations('zh-cn', THINKING_LEADING['zh-cn']);
     $translateProvider.translations('zh-cn', HELPER_ARTICLES['zh-cn']);
 
     $translateProvider.preferredLanguage('zh-cn');

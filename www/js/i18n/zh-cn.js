@@ -133,4 +133,22 @@ METHODOLOGY["zh-cn"]={
 
   "advanced" : "高级篇",
   "spec-example" : "《实例化需求》"
-}
+};
+
+THINKING_LEADING["zh-cn"]={
+  "thinking-leading" : "思想与领导力",
+  "basic" : "基础篇",
+  "effecitve-executive" : "《卓有成效的管理者》",
+  "lights-on" : "《你的灯亮着吗》",
+  "technical-leader" : "《成为技术领导者》",
+
+  "intermediate" : "进阶篇",
+  "fifth-discipline" : "《第五项修炼》",
+  "design-of-business" : "《商业设计:通过设计思维构建公司持续竞争优势》",
+  "management-3.0" : "《管理3.0：培养和提升敏捷领导力》",
+  "presnetation-to-win" : "《Presentation To Win》",
+  "mckinsey-way" : "《麦肯锡方法》",
+
+  "advanced" : "高级篇",
+  "think-fast-slow" : "《思考，快与慢》"
+};
